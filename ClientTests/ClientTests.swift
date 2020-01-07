@@ -1,11 +1,3 @@
-//
-//  ClientTests.swift
-//  ClientTests
-//
-//  Created by Noah Emmet on 1/3/20.
-//  Copyright © 2020 FullStackGraphQL. All rights reserved.
-//
-
 import XCTest
 @testable import Client
 

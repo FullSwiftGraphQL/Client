@@ -1,11 +1,3 @@
-//
-//  ClientUITests.swift
-//  ClientUITests
-//
-//  Created by Noah Emmet on 1/3/20.
-//  Copyright © 2020 FullStackGraphQL. All rights reserved.
-//
-
 import XCTest
 
 class ClientUITests: XCTestCase {
