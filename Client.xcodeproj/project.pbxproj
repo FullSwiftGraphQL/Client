@@ -16,6 +16,9 @@
 		8695120E23C076670085E5BC /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8695120D23C076670085E5BC /* ClientTests.swift */; };
 		8695121923C076670085E5BC /* ClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8695121823C076670085E5BC /* ClientUITests.swift */; };
 		8695122823C078240085E5BC /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 8695122723C078240085E5BC /* Apollo */; };
+		86B35CA623C48EB8000BDAF6 /* Schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 86B35CA523C48EB8000BDAF6 /* Schema.json */; };
+		86B35CA823C48F54000BDAF6 /* API.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 86B35CA723C48F54000BDAF6 /* API.graphql */; };
+		86B35CAA23C494A0000BDAF6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B35CA923C494A0000BDAF6 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		8695121423C076670085E5BC /* ClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8695121823C076670085E5BC /* ClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientUITests.swift; sourceTree = "<group>"; };
 		8695121A23C076670085E5BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86B35CA523C48EB8000BDAF6 /* Schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Schema.json; sourceTree = "<group>"; };
+		86B35CA723C48F54000BDAF6 /* API.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = API.graphql; sourceTree = "<group>"; };
+		86B35CA923C494A0000BDAF6 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 		869511F523C076660085E5BC /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				86B35CA423C48EA9000BDAF6 /* GraphQL */,
 				869511F623C076660085E5BC /* AppDelegate.swift */,
 				869511F823C076660085E5BC /* SceneDelegate.swift */,
 				869511FA23C076660085E5BC /* ContentView.swift */,
@@ -136,6 +143,16 @@
 				8695121A23C076670085E5BC /* Info.plist */,
 			);
 			path = ClientUITests;
+			sourceTree = "<group>";
+		};
+		86B35CA423C48EA9000BDAF6 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				86B35CA523C48EB8000BDAF6 /* Schema.json */,
+				86B35CA923C494A0000BDAF6 /* API.swift */,
+				86B35CA723C48F54000BDAF6 /* API.graphql */,
+			);
+			path = GraphQL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +266,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86B35CA623C48EB8000BDAF6 /* Schema.json in Resources */,
 				8695120323C076670085E5BC /* LaunchScreen.storyboard in Resources */,
 				8695120023C076670085E5BC /* Preview Assets.xcassets in Resources */,
+				86B35CA823C48F54000BDAF6 /* API.graphql in Resources */,
 				869511FD23C076670085E5BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +307,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# https://www.apollographql.com/docs/ios/installation/#adding-a-code-generation-build-step\n\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+			shellScript = "# https://www.apollographql.com/docs/ios/installation/#adding-a-code-generation-build-step\n\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"GraphQL/Schema.json\" \"GraphQL/API.swift\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -299,6 +318,7 @@
 			files = (
 				869511F723C076660085E5BC /* AppDelegate.swift in Sources */,
 				869511F923C076660085E5BC /* SceneDelegate.swift in Sources */,
+				86B35CAA23C494A0000BDAF6 /* API.swift in Sources */,
 				869511FB23C076660085E5BC /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

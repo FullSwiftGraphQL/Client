@@ -1,0 +1,12 @@
+# The schema is taken from https://github.com/apollographql/apollo-tooling/blob/master/__fixtures__/starwars/schema.json
+fragment HumanFragment on Human {
+  id
+  name
+  homePlanet
+  height
+  mass
+  friends {
+    id
+    name
+  }
+}
