@@ -10,3 +10,18 @@ fragment HumanFragment on Human {
     name
   }
 }
+
+fragment CharacterFragment on Character {
+  id
+  name
+  friends {
+    id
+    name
+  }
+}
+
+query GetHero($episode: Episode) {
+  hero(episode: $episode) {
+    ...CharacterFragment
+  }
+}
